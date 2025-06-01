@@ -29,7 +29,7 @@ typedef struct
 typedef struct {
     t_lista *buckets; // vector de listas
     size_t capacidad;
-    unsigned int (*hash)(void*);
+    unsigned long (*hash)(void*);
     int (*cmp)(const void *e1, const void *e2);
 } t_diccionario;
 

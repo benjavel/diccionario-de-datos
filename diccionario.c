@@ -28,8 +28,10 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
     size_t indice;
     t_clave_valor info;
 
-    memcpy(info.clave, clave, tamClave);
-    memcpy(info.valor, valor, tamValor);
+    //memcpy(info.clave, clave, tamClave);
+    //memcpy(info.valor, valor, tamValor);
+    info.clave = clave;
+    info.valor = valor;
 
     info.tamClave = tamClave;
     info.tamValor = tamValor;
