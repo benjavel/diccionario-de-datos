@@ -25,3 +25,31 @@
 	"diccionario.h"
 	"utils.h"
 
+1748813855 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.c
+	"diccionario.h"
+	"utils.h"
+
+1748814239 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.h
+	"lista.h"
+	<stdlib.h>
+
+1748813855 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.h
+	<stdlib.h>
+	<string.h>
+
+1748813855 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.h
+	<string.h>
+	"diccionario.h"
+
+1748813855 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
+	"lista.h"
+
+1748814064 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"diccionario.h"
+	"utils.h"
+
+1748813855 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
+	"utils.h"
+

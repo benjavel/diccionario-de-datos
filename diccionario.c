@@ -1,7 +1,7 @@
 #include "diccionario.h"
 #include "utils.h"
 
-int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned int (*hash)(void *), int (*cmp)(const void *e1, const void *e2))
+int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned long (*hash)(void *), int (*cmp)(const void *e1, const void *e2))
 {
     pdic->buckets = malloc(sizeof(t_nodo *) * capacidad); // tlista??
     if (!pdic->buckets)
@@ -27,8 +27,11 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
     size_t indice;
     t_clave_valor info;
 
-    memcpy(info.clave, clave, tamClave);
-    memcpy(info.valor, valor, tamValor);
+    //memcpy(info.clave, clave, tamClave);
+    //memcpy(info.valor, valor, tamValor);
+
+    info.clave = clave;
+    info.valor = valor;
 
     info.tamClave = tamClave;
     info.tamValor = tamValor;
@@ -58,7 +61,7 @@ void recorrer_dic(const t_diccionario *pdic, void (*accion)(void *, void*), void
     {
         accion(pdic->buckets[i], params);
     }
-    
+
 }
 
 void vaciar_dic(t_diccionario *pdic)

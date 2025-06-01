@@ -29,7 +29,7 @@ typedef struct
 typedef struct {
     t_lista *buckets; // vector de listas
     size_t capacidad;
-    unsigned int (*hash)(void*);
+    unsigned long (*hash)(void*);
     int (*cmp)(const void *e1, const void *e2);
 } t_diccionario;
 
@@ -37,7 +37,7 @@ typedef struct {
 // debe recibir por par�metro una capacidad m�xima y definir los valores
 // necesarios para inicializar el diccionario.
 // */
-int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned int (*hash)(void *), int (*cmp)(const void *e1, const void *e2));
+int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned long (*hash)(void *), int (*cmp)(const void *e1, const void *e2));
 // /**
 // agrega un nuevo elemento al diccionario. Recibe la clave y el valor a
 // agregar al diccionario, calcula la posici�n correcta para insertarlo y maneja las
