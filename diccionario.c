@@ -1,5 +1,6 @@
 #include "diccionario.h"
 #include "utils.h"
+// hola
 
 int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned int (*hash)(void *), int (*cmp)(const void *e1, const void *e2))
 {
@@ -58,7 +59,7 @@ void recorrer_dic(const t_diccionario *pdic, void (*accion)(void *, void*), void
     {
         accion(pdic->buckets[i], params);
     }
-    
+
 }
 
 void vaciar_dic(t_diccionario *pdic)
