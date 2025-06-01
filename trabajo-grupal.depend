@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1748657300 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\lista.c
+	"lista.h"
+
+1748657476 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\lista.h
+	<stdlib.h>
+	<string.h>
+
+1748811741 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\main.c
+	<stdio.h>
+	<stdlib.h>
+	"diccionario.h"
+	"utils.h"
+
+1748658028 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\utils.c
+	"utils.h"
+
+1748657915 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\utils.h
+	<string.h>
+	"diccionario.h"
+
+1748811069 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\diccionario.h
+	"lista.h"
+	<stdlib.h>
+
+1748812457 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\trabajo-grupal\trabajo-grupal\diccionario.c
+	"diccionario.h"
+	"utils.h"
+
