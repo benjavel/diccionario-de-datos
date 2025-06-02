@@ -50,7 +50,7 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
             clave[fin - ini] = '\0';
             printf("%s\n", clave);
             cont->palabras++;
-            poner_dic(dic, clave, &valor, strlen(clave), sizeof(int), acumulador);
+            poner_dic(dic, clave, &valor, strlen(clave)+1, sizeof(int), acumulador);
 
         }
     }
