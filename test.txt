@@ -1,0 +1,1 @@
+Implementar el TDA t_diccionario resolviendo las primitivas antes mencionadas. La implementación del mismo debe ser totalmente genérica, permitiendo que el diccionario almacene datos de cualquier tipo y tamaño, con claves de cualquier tipo de dato.
