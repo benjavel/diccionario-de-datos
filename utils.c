@@ -1,6 +1,6 @@
 #include "utils.h"
 
-// Normalizar texto antes de mandarlo al DIC?
+// Normalizar texto antes de mandarlo al DIC? sí
 // tam clave???
 
 unsigned long hash_DJB2a(void *str)
