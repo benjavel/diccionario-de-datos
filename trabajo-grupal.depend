@@ -80,3 +80,40 @@
 1748829310 source:/home/nicolas/diccionario-de-datos/utils.c
 	"utils.h"
 
+1749336114 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.c
+	"diccionario.h"
+	"utils.h"
+
+1749334633 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.h
+	"lista.h"
+	<stdlib.h>
+
+1749334633 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.h
+	<stdlib.h>
+	<string.h>
+
+1749336798 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.h
+	<string.h>
+	<stdio.h>
+	"diccionario.h"
+
+1749334633 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
+	"lista.h"
+
+1749340381 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"diccionario.h"
+	"utils.h"
+	"procesadordetexto.h"
+
+1749334633 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesadordetexto.h
+	"diccionario.h"
+	<stdio.h>
+
+1749336145 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesador-de-texto.c
+	"procesadordetexto.h"
+
+1749336994 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
+	"utils.h"
+

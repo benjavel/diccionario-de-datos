@@ -47,3 +47,27 @@ void acumular_palabra(void** dest, void* sourc)
 
     *cantidadDest += *cantidadSourc;
 }
+
+int mostrar_menu()
+{
+
+    printf("\n+-------------------------------------------------+\n");
+    printf("| MENU PRINCIPAL                                  |\n");
+    printf("+-------------------------------------------------+\n");
+    printf("| 1. Cantidad de palabras, espacios y signos      |\n");
+    printf("| 2. Cantidad de apariciones de una misma palabra |\n");
+    printf("| 3. Podio                                        |\n");
+    printf("| 4. Elejir otro archivo                          |\n");
+    printf("| 5. Salir                                        |\n");
+    printf("+-------------------------------------------------+\n");
+    printf("| Elige una opcion:                               |\n");
+    printf("+-------------------------------------------------+\n");
+
+}
+
+int pedir_archivo(char* nomArch)
+{
+
+    printf("Ingrese el nombre del archivo que quiere analizar: ");
+    scanf("%s", nomArch);
+}
