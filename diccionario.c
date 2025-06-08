@@ -26,7 +26,7 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
 {
     size_t indice;
     t_clave_valor info;
-    printf("DENTRO DE PONER EN DIC: %s\n", (char*)clave);
+    //printf("DENTRO DE PONER EN DIC: %s\n", (char*)clave);
 
     info.clave = malloc(tamClave);
     info.valor = malloc(tamValor);
@@ -72,6 +72,7 @@ void vaciar_dic(t_diccionario *pdic)
 {
     for (size_t i = 0; i < pdic->capacidad; i++)
     {
+        recorrer_lista(&(pdic->buckets[i]), free_clave_valor, NULL);
         vaciar_lista(&(pdic->buckets[i])); // cuando i == 0 ???
     }
 
