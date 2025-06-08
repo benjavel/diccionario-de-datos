@@ -42,9 +42,16 @@ int main()
             cv.tamClave = strlen(palabra) + 1;
             cv.clave = malloc(cv.tamClave);
             memcpy(cv.clave, palabra, cv.tamClave);
+            cv.valor = NULL;
 
-            obtener_dic(&dic, &cv);
-            printf("%s ha aparecido %d veces", (char*)cv.clave, *(size_t*)cv.valor);
+            if(obtener_dic(&dic, &cv) == TODO_OK)
+            {
+                printf("%s ha aparecido %d veces", (char*)cv.clave, *(size_t*)cv.valor);
+            }
+            else
+            {
+                printf("%s no se encuentra en el texto", (char*)cv.clave);
+            }
             break;
         case 3: // Podio
             printf("Accion 3");
