@@ -11,5 +11,8 @@ int comparar_string(const void* e1, const void* e2);
 void imprimir_clavevalor(void* clavevalor, void* params);
 void acumular_palabra(void** dest, void* sourc);
 void free_clave_valor(void* clavevalor, void* params);
+int mostrar_menu();
+int pedir_archivo(char* nomArch);
+
 
 #endif

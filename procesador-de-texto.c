@@ -64,15 +64,6 @@ int esPalabra(unsigned char **cad, unsigned char **pIni, unsigned char **pFin, s
 
     *pIni = p;
 
-    /*res = isalpha(*p);
-    while(res || ES_VOCAL_ACENTUADA_UTF8(p)){
-    if(ES_VOCAL_ACENTUADA_UTF8(p)) 
-        p += 2; // Saltar 2 bytes para UTF-8
-    else 
-        p++;
-
-    res = isalpha(*p);
-}*/
 
     while (ES_LETRA_PTR(p))
     {
