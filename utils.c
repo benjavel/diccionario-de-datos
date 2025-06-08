@@ -33,7 +33,7 @@ void imprimir_clavevalor(void* clavevalor, void* params)
     t_diccionario *dic = params;
     int indice = dic->hash(cv->clave) % dic->capacidad;
 
-    printf("\n[%d] { %s : %d }", indice, (char*)cv->clave, *(int*)cv->valor);
+    printf("\n[%5d] { %-20s : %-2d }", indice, (char*)cv->clave, *(int*)cv->valor);
 
 }
 
@@ -46,6 +46,20 @@ void acumular_palabra(void** dest, void* sourc)
     int* cantidadSourc = sourcClave->valor;
 
     *cantidadDest += *cantidadSourc;
+}
+
+
+void free_clave_valor(void* clavevalor, void* params)
+{
+    t_clave_valor* cv = clavevalor;
+
+    cv->tamClave = 0;
+    cv->tamValor = 0;
+    
+    free(cv->clave);
+    free(cv->valor);
+    cv->clave = NULL;
+    cv->valor = NULL;   
 }
 
 int mostrar_menu()
@@ -71,3 +85,4 @@ int pedir_archivo(char* nomArch)
     printf("Ingrese el nombre del archivo que quiere analizar: ");
     scanf("%s", nomArch);
 }
+

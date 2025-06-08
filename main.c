@@ -78,7 +78,7 @@ int main()
 
 
 
-    //printf("Cant palabras: %d \nCant Espacios: %d\n Cant Puntuaciones: %d\n", cont.palabras, cont.espacio, cont.puntuacion);
+    printf("\nCant palabras: %d \nCant Espacios: %d\nCant Puntuaciones: %d\n", (int)cont.palabras, (int)cont.espacio, (int)cont.puntuacion);
 
     // char* clave = "Perro";
     // char* valor = "Un perro";
@@ -107,6 +107,7 @@ int main()
     // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
 
     recorrer_dic(&dic, imprimir_clavevalor, &dic);
+    printf("\n");
     // t_clave_valor cv;
     // cv.clave = clave;
     // cv.tamClave = 6;

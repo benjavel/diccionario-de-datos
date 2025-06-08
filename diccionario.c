@@ -72,6 +72,7 @@ void vaciar_dic(t_diccionario *pdic)
 {
     for (size_t i = 0; i < pdic->capacidad; i++)
     {
+        recorrer_lista(&(pdic->buckets[i]), free_clave_valor, NULL);
         vaciar_lista(&(pdic->buckets[i])); // cuando i == 0 ???
     }
 
