@@ -24,5 +24,6 @@ typedef struct
 int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acumulador)(void**, void*), t_contador* cont);
 char* buscarSignoDePuntuacion(char* linea, t_contador* cont);
 int esPalabra(char **cad, char **pIni, char **pFin, size_t *cont_blanco, size_t *cont_signo);
+void normalizarClaveMayus(char* cadena);
 
 #endif

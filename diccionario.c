@@ -28,8 +28,12 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
     t_clave_valor info;
     //printf("DENTRO DE PONER EN DIC: %s\n", (char*)clave);
 
+    
+
     info.clave = malloc(tamClave);
     info.valor = malloc(tamValor);
+
+    //info = malloc(tamClave + tamValor)
 
     memcpy(info.clave, clave, tamClave);
     memcpy(info.valor, valor, tamValor);
@@ -52,10 +56,23 @@ int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val) // preguntar 
     return buscarEnLista(&(pdic->buckets[indice]), key_val, sizeof(t_clave_valor),pdic->cmp);
 }
 
-int sacar_dic(t_diccionario *pdic, t_clave_valor *key_val)
+int sacar_dic(t_diccionario *pdic, const void *clave)
 {
-    size_t indice = pdic->hash(key_val->clave) % pdic->capacidad;
-    return eliminarDeLista(&(pdic->buckets[indice]), key_val, sizeof(t_clave_valor), pdic->cmp);
+    /// *info
+    size_t indice = pdic->hash(clave) % pdic->capacidad;
+    t_clave_valor info;
+
+    info.clave = clave;
+
+    if(eliminarDeLista(&(pdic->buckets[indice]), &info, sizeof(t_clave_valor), pdic->cmp))
+    {
+        free(info.clave);
+        free(info.tamValor);
+
+        return TODO_OK;
+    }
+
+    return ERROR;
 }
 
 void recorrer_dic(const t_diccionario *pdic, void (*accion)(void *, void*), void* params)
@@ -72,6 +89,7 @@ void vaciar_dic(t_diccionario *pdic)
 {
     for (size_t i = 0; i < pdic->capacidad; i++)
     {
+        //recorrer_lista(&(pdic->buckets[i]), free_clave_valor, NULL);
         vaciar_lista(&(pdic->buckets[i])); // cuando i == 0 ???
     }
 
@@ -80,4 +98,4 @@ void vaciar_dic(t_diccionario *pdic)
     pdic->hash = NULL;
     free(pdic->buckets);
     pdic->buckets = NULL;
-}
+} 

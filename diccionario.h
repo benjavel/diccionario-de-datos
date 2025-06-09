@@ -42,7 +42,7 @@ int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val);
 /*
 Elimina un elemento del diccionario buscando por clave.
 */
-int sacar_dic(t_diccionario *pdic, t_clave_valor *key_val);
+int sacar_dic(t_diccionario *pdic, const void *clave);
 
 /*
 Recorre el diccionario de datos ejecutando una acci�n para cada

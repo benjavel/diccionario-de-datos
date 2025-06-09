@@ -22,8 +22,10 @@ typedef t_nodo* t_lista;
 
 void crear_lista(t_lista *pl);
 int insertarAlFinalNoDup(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2), void (*acumulador)(void**, void*));
+int insertarOrdenadoLista(t_lista* pl, const void* dato, size_t tamDato, int(*cmp)(const void* e1, const void* e2));
 int buscarEnLista(const t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2));
 int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2));
+int eliminar_actual_lista(t_lista *pl);
 void vaciar_lista(t_lista *pl);
 
 void recorrer_lista(t_lista *pl, void (*accion)(void*, void*), void* params);

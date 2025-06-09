@@ -49,6 +49,35 @@ int insertarAlFinalNoDup(t_lista *pl, void* dato, size_t tam, int (*cmp)(const v
     return TODO_OK;
 }
 
+int insertarOrdenadoLista(t_lista* pl, const void* dato, size_t tamDato, int(*cmp)(const void* e1, const void* e2))
+{
+    t_nodo* nuevo;
+
+    while (*pl && cmp((*pl)->info, dato) > 0)
+    {
+        pl = &(*pl)->sig;
+    }
+
+    nuevo = (t_nodo*)malloc(sizeof(t_nodo));
+    if(!nuevo)
+    {
+        return ERROR;
+    }
+    nuevo->info = malloc(tamDato);
+    if(!nuevo->info)
+    {
+        free(nuevo);
+        return ERROR;
+    }
+
+    memcpy(nuevo->info, dato, tamDato);
+    nuevo->tamInfo = tamDato;
+    nuevo->sig = *pl;
+    *pl = nuevo;
+
+    return TODO_OK;
+}
+
 int buscarEnLista(const t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2))
 {
     int resultado;
@@ -89,6 +118,23 @@ int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *
 
     return TODO_OK;
 }
+
+int eliminar_actual_lista(t_lista *pl)
+{
+
+    t_nodo* elim;
+    while(*pl)
+    {
+        elim = *pl;
+        *pl = elim->sig;
+
+        free(elim->info);
+        free(elim);
+    }
+
+    *pl = NULL;
+}
+
 
 void recorrer_lista(t_lista *pl, void (*accion)(void*, void*), void* params)
 {

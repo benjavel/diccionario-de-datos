@@ -3,6 +3,8 @@
 #include "diccionario.h"
 #include "utils.h"
 #include "procesadordetexto.h"
+#include "podio.h"
+#include "lista.h"
 
 int main()
 {
@@ -19,7 +21,7 @@ int main()
 
     t_diccionario dic;
     t_contador cont;
-    crear_dic(&dic, 500, hash_DJB2a, comparar_string);
+    crear_dic(&dic, 2, hash_DJB2a, comparar_string);
     pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont);
     do
     {
@@ -34,13 +36,14 @@ int main()
             printf("Signos: %d\n", cont.puntuacion);
             break;
         case 2: // Pedir palabra
-            printf("Ingrese la palabra:");
+            printf("Ingrese la palabra en mayuscula:");
             char palabra[100];
             scanf("%s", palabra);
 
             t_clave_valor cv;
             cv.tamClave = strlen(palabra) + 1;
             cv.clave = malloc(cv.tamClave);
+            normalizarClaveMayus(palabra);
             memcpy(cv.clave, palabra, cv.tamClave);
             cv.valor = NULL;
 
@@ -54,65 +57,42 @@ int main()
             }
             break;
         case 3: // Podio
-            printf("Accion 3");
+            //printf("PODIO DE LAS 5 PALABRAS CON MAS APARICIONES:\n");
+            printf("PUESTO | HASH | %-30s | CANTIDAD |\n", "PALABRA");
+            tPodio podio;
+            crear_lista(&podio);
+            t_parametros_podio params;
+            params.podio = &podio;
+            params.cmp = compararElementos;
+            recorrer_dic(&dic, pasarDiccionarioAPodio, &params);
+
+            recorrer_lista(&podio, imprimir_elem_podio, &dic);
+
+            eliminar_actual_lista(&podio);
             break;
         case 4: // Elejir otro
             pedir_archivo(nomArch);
             vaciar_dic(&dic);
+            crear_dic(&dic, 2, hash_DJB2a, comparar_string);
             pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont);
             break;
-        case 5: // Salir
+        case 5: //
+            recorrer_dic(&dic, imprimir_clavevalor, &dic);
+            break;
+        case 6: // Salir
             printf("Gracias por usar el diccionario de datos.");
             vaciar_dic(&dic);
             break;
         default:
-            printf("Eleji una opcion valida!");
+            printf("Elegi una opcion valida!");
             break;
 
         }
         getch();
-
         system("cls || clear");
+
     }
     while(opcion != 5);
-
-
-
-    //printf("Cant palabras: %d \nCant Espacios: %d\n Cant Puntuaciones: %d\n", cont.palabras, cont.espacio, cont.puntuacion);
-
-    // char* clave = "Perro";
-    // char* valor = "Un perro";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-
-    // clave = "Gato";
-    // valor = "Un Gato";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-
-    // clave = "Otro gato";
-    // valor = "Dos gatos";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-
-    // clave = "Loro";
-    // valor = "Un loro";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-
-    // clave = "Iguana";
-    // valor = "Una iguana";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-    // clave = "Manzana";
-    // valor = "Una manzana";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-    // clave = "manzana";
-    // valor = "Una manzana (min)";
-    // poner_dic(&dic, clave, valor, strlen(clave), strlen(valor), NULL);
-
-    recorrer_dic(&dic, imprimir_clavevalor, &dic);
-    // t_clave_valor cv;
-    // cv.clave = clave;
-    // cv.tamClave = 6;
-    // sacar_dic(&dic, &cv);
-
-    // printf("\nClave: %s, Valor: %s", (char*)cv.clave, (char*)cv.valor);
 
     vaciar_dic(&dic);
 
