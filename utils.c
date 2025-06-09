@@ -61,20 +61,6 @@ void free_clave_valor(void* clavevalor, void* params)
     cv->valor = NULL;   
 }
 
-
-void free_clave_valor(void* clavevalor, void* params)
-{
-    t_clave_valor* cv = clavevalor;
-
-    cv->tamClave = 0;
-    cv->tamValor = 0;
-    
-    free(cv->clave);
-    free(cv->valor);
-    cv->clave = NULL;
-    cv->valor = NULL;   
-}
-
 int mostrar_menu()
 {
 
