@@ -5,18 +5,15 @@
 //  calcule la cantidad de palabras, espacios y signos de puntuación que contiene
 int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acumulador)(void**, void*), t_contador* cont)
 {
-
-    char *ptr, *ini, *fin;
-
+    unsigned char *ptr, *ini, *fin;
 
     char *puntero;
-    char clave[100];
+    unsigned char clave[100];
     char linea[TAM_LINEA];
     int valor = 1;
     FILE* pf = fopen(nombreArchivo, "rt");
     if(!pf)
         return ERROR;
-
 
     cont->palabras = cont->espacio = cont->puntuacion = 0;
 
@@ -25,7 +22,7 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
         while( esPalabra(&ptr, &ini, &fin, &(cont->espacio), &(cont->puntuacion)) ){
             memcpy(clave, ini, fin - ini);
             clave[fin - ini] = '\0';
-            //printf("%s\n", clave);
+
             cont->palabras++;
 
             normalizarClaveMayus(clave);
@@ -37,9 +34,9 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
     fclose(pf);
 }
 
-int esPalabra(char **cad, char **pIni, char **pFin, size_t *cont_blanco, size_t *cont_signo){
-    char *p = *cad;
-
+int esPalabra(unsigned char **cad, unsigned char **pIni, unsigned char **pFin, size_t *cont_blanco, size_t *cont_signo){
+    unsigned char *p = *cad;
+    int res;
     while(*p != '\0') {
         while(ES_BLANCO(*p)){
             p++;
@@ -51,11 +48,11 @@ int esPalabra(char **cad, char **pIni, char **pFin, size_t *cont_blanco, size_t 
             (*cont_signo)++;
         }
 
-        if(ES_LETRA(*p)) {
+        if(ES_LETRA_PTR(p)) {
             break;
         }
 
-        if(*p != '\0' && !ES_BLANCO(*p) && !ES_SIGNO(*p) && !ES_LETRA(*p)) {
+        if(*p != '\0' && !ES_BLANCO(*p) && !ES_SIGNO(*p) && !ES_LETRA_PTR(p)) {
             p++;
         }
     }
@@ -67,8 +64,13 @@ int esPalabra(char **cad, char **pIni, char **pFin, size_t *cont_blanco, size_t 
 
     *pIni = p;
 
-    while(ES_LETRA(*p)){
-        p++;
+
+    while (ES_LETRA_PTR(p))
+    {
+        if(ES_VOCAL_ACENTUADA_UTF8(p)) 
+            p += 2; // Saltar 2 bytes para UTF-8
+        else 
+            p++;
     }
 
     *pFin = p;
@@ -78,16 +80,9 @@ int esPalabra(char **cad, char **pIni, char **pFin, size_t *cont_blanco, size_t 
 
 void normalizarClaveMayus(char* cadena)
 {
-    while (*cadena != '\0')
+    while(*cadena != '\0')
     {
         *cadena = toupper(*cadena);
         cadena++;
     }
 }
-
-
-
-
-
-
-

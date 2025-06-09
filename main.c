@@ -92,7 +92,7 @@ int main()
         system("cls || clear");
 
     }
-    while(opcion != 5);
+    while(opcion != 6);
 
     vaciar_dic(&dic);
 
