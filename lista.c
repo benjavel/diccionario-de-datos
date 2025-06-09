@@ -133,6 +133,8 @@ int eliminar_actual_lista(t_lista *pl)
     }
 
     *pl = NULL;
+
+    return TODO_OK;
 }
 
 

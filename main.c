@@ -5,6 +5,7 @@
 #include "procesadordetexto.h"
 #include "podio.h"
 #include "lista.h"
+#include <conio.h>
 
 int main()
 {
@@ -36,7 +37,7 @@ int main()
             printf("Signos: %d\n", cont.puntuacion);
             break;
         case 2: // Pedir palabra
-            printf("Ingrese la palabra en mayuscula:");
+            printf("Ingrese la palabra: ");
             char palabra[100];
             scanf("%s", palabra);
 

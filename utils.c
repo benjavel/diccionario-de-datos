@@ -48,18 +48,7 @@ void acumular_palabra(void** dest, void* sourc)
     *cantidadDest += *cantidadSourc;
 }
 
-void free_clave_valor(void* clavevalor, void* params)
-{
-    t_clave_valor* cv = clavevalor;
 
-    cv->tamClave = 0;
-    cv->tamValor = 0;
-    
-    free(cv->clave);
-    free(cv->valor);
-    cv->clave = NULL;
-    cv->valor = NULL;   
-}
 
 
 void free_clave_valor(void* clavevalor, void* params)
@@ -68,14 +57,14 @@ void free_clave_valor(void* clavevalor, void* params)
 
     cv->tamClave = 0;
     cv->tamValor = 0;
-    
+
     free(cv->clave);
     free(cv->valor);
     cv->clave = NULL;
-    cv->valor = NULL;   
+    cv->valor = NULL;
 }
 
-int mostrar_menu()
+void mostrar_menu()
 {
 
     printf("\n+-------------------------------------------------+\n");
@@ -93,10 +82,22 @@ int mostrar_menu()
 
 }
 
-int pedir_archivo(char* nomArch)
+void pedir_archivo(char* nomArch)
 {
 
     printf("Ingrese el nombre del archivo que quiere analizar: ");
     scanf("%s", nomArch);
 }
 
+
+void imprimir_elem_podio(void* info, void* params)
+{
+    tElemPodio* elemActual = info;
+    char* palabraActual = elemActual->info;
+    t_diccionario* dic = (t_diccionario*)params;
+
+    int hash = dic->hash(palabraActual) % dic->capacidad;
+    printf("%-6d | %-4d | %-30s | %-8d |\n", (int)elemActual->posicion, hash, palabraActual, elemActual->puntaje);
+    //printf("%d | [%d] { %s : %d} \n", (int)elemActual->posicion, hash, palabraActual, elemActual->puntaje);
+    // printf("Palabra: %s\nCantidad:%.2f\nPuesto %d\n\n", palabraActual, elemActual->puntaje, (int)elemActual->posicion);
+}

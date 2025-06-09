@@ -52,7 +52,7 @@ int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val) // preguntar 
     return buscarEnLista(&(pdic->buckets[indice]), key_val, sizeof(t_clave_valor),pdic->cmp);
 }
 
-int sacar_dic(t_diccionario *pdic, const void *clave)
+int sacar_dic(t_diccionario *pdic, void *clave)
 {
     /// *info
     size_t indice = pdic->hash(clave) % pdic->capacidad;
@@ -63,7 +63,7 @@ int sacar_dic(t_diccionario *pdic, const void *clave)
     if(eliminarDeLista(&(pdic->buckets[indice]), &info, sizeof(t_clave_valor), pdic->cmp))
     {
         free(info.clave);
-        free(info.tamValor);
+        free(info.valor);
 
         return TODO_OK;
     }
@@ -94,4 +94,4 @@ void vaciar_dic(t_diccionario *pdic)
     pdic->hash = NULL;
     free(pdic->buckets);
     pdic->buckets = NULL;
-} 
+}

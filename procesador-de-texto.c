@@ -7,9 +7,8 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
 {
     unsigned char *ptr, *ini, *fin;
 
-    char *puntero;
     unsigned char clave[100];
-    char linea[TAM_LINEA];
+    unsigned char linea[TAM_LINEA];
     int valor = 1;
     FILE* pf = fopen(nombreArchivo, "rt");
     if(!pf)
@@ -17,7 +16,7 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
 
     cont->palabras = cont->espacio = cont->puntuacion = 0;
 
-    while (fgets(linea, TAM_LINEA, pf)){ // 2^16
+    while (fgets((char*)linea, TAM_LINEA, pf)){ // 2^16
         ptr = linea;
         while( esPalabra(&ptr, &ini, &fin, &(cont->espacio), &(cont->puntuacion)) ){
             memcpy(clave, ini, fin - ini);
@@ -25,18 +24,19 @@ int pasar_texto_a_dic(t_diccionario* dic, const char* nombreArchivo, void (*acum
 
             cont->palabras++;
 
-            normalizarClaveMayus(clave);
-            poner_dic(dic, clave, &valor, strlen(clave)+1, sizeof(int), acumulador);
+            normalizarClaveMayus((char*)clave);
+            poner_dic(dic, clave, &valor, strlen((char*)clave)+1, sizeof(int), acumulador);
 
         }
     }
 
     fclose(pf);
+
+    return TODO_OK;
 }
 
 int esPalabra(unsigned char **cad, unsigned char **pIni, unsigned char **pFin, size_t *cont_blanco, size_t *cont_signo){
     unsigned char *p = *cad;
-    int res;
     while(*p != '\0') {
         while(ES_BLANCO(*p)){
             p++;
@@ -67,9 +67,9 @@ int esPalabra(unsigned char **cad, unsigned char **pIni, unsigned char **pFin, s
 
     while (ES_LETRA_PTR(p))
     {
-        if(ES_VOCAL_ACENTUADA_UTF8(p)) 
+        if(ES_VOCAL_ACENTUADA_UTF8(p))
             p += 2; // Saltar 2 bytes para UTF-8
-        else 
+        else
             p++;
     }
 

@@ -80,11 +80,11 @@
 1748829310 source:/home/nicolas/diccionario-de-datos/utils.c
 	"utils.h"
 
-1749428822 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.c
+1749432603 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.c
 	"diccionario.h"
 	"utils.h"
 
-1749428843 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.h
+1749432390 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\diccionario.h
 	"lista.h"
 	<stdlib.h>
 
@@ -92,16 +92,16 @@
 	<stdlib.h>
 	<string.h>
 
-1749429791 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.h
+1749432335 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.h
 	<string.h>
 	<stdio.h>
 	"diccionario.h"
 	"podio.h"
 
-1749428407 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
+1749432627 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
 	"lista.h"
 
-1749431132 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
+1749432892 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
 	<stdio.h>
 	<stdlib.h>
 	"diccionario.h"
@@ -109,15 +109,17 @@
 	"procesadordetexto.h"
 	"podio.h"
 	"lista.h"
+	<conio.h>
 
-1749429219 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesadordetexto.h
+1749432763 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesadordetexto.h
 	"diccionario.h"
 	<stdio.h>
+	<ctype.h>
 
-1749426522 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesador-de-texto.c
+1749432789 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesador-de-texto.c
 	"procesadordetexto.h"
 
-1749431088 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
+1749432327 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
 	"utils.h"
 
 1749427691 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\podio.h
