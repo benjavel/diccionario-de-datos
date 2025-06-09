@@ -98,10 +98,10 @@
 	"diccionario.h"
 	"podio.h"
 
-1749432627 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
+1749434515 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\lista.c
 	"lista.h"
 
-1749432892 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
+1749434894 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\main.c
 	<stdio.h>
 	<stdlib.h>
 	"diccionario.h"
@@ -119,7 +119,7 @@
 1749432789 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\procesador-de-texto.c
 	"procesadordetexto.h"
 
-1749432327 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
+1749433111 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\utils.c
 	"utils.h"
 
 1749427691 e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\podio.h

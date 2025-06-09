@@ -81,6 +81,14 @@ int main()
             recorrer_dic(&dic, imprimir_clavevalor, &dic);
             break;
         case 6: // Salir
+            printf("Elige la palabra a eliminar: ");
+            char claveElim[256];
+            scanf("%s", claveElim);
+
+            normalizarClaveMayus(claveElim);
+            sacar_dic(&dic, claveElim);
+            break;
+        case 7: // Salir
             printf("Gracias por usar el diccionario de datos.");
             vaciar_dic(&dic);
             break;
@@ -93,7 +101,7 @@ int main()
         system("cls || clear");
 
     }
-    while(opcion != 6);
+    while(opcion != 7);
 
     vaciar_dic(&dic);
 

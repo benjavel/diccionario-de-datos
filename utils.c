@@ -75,7 +75,8 @@ void mostrar_menu()
     printf("| 3. Podio                                        |\n");
     printf("| 4. Elegir otro archivo                          |\n");
     printf("| 5. Ver diccionario                              |\n");
-    printf("| 6. Salir                                        |\n");
+    printf("| 6. Eliminar palabra                             |\n");
+    printf("| 7. Salir                                        |\n");
     printf("+-------------------------------------------------+\n");
     printf("| Elige una opcion:                               |\n");
     printf("+-------------------------------------------------+\n");

@@ -95,6 +95,7 @@ int buscarEnLista(const t_lista *pl, void* dato, size_t tam, int (*cmp)(const vo
 
 int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2))
 {
+    t_nodo *elim;
     int resultado;
     if(!(*pl))
     {
@@ -113,8 +114,10 @@ int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *
 
     memcpy(dato, (*pl)->info, MINIMO((*pl)->tamInfo, tam));
 
-    free((*pl)->info);
-    free(*pl);
+    elim = *pl;
+    *pl = elim->sig;
+    free(elim->info);
+    free(elim);
 
     return TODO_OK;
 }
