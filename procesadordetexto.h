@@ -29,7 +29,6 @@
 #include "diccionario.h"
 #include <stdio.h>
 #include <ctype.h>
-//#include <locale.h>
 
 typedef struct
 {

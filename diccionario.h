@@ -37,7 +37,8 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
 /*
 busca un elemento en el diccionario por clave y devuelve el valor.
 */
-int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val);
+//int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val);
+int obtener_dic(const t_diccionario *pdic, void* clave, void* valor);
 
 /*
 Elimina un elemento del diccionario buscando por clave.

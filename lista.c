@@ -149,3 +149,94 @@ void recorrer_lista(t_lista *pl, void (*accion)(void*, void*), void* params)
         pl = &(*pl)->sig;
     }
 }
+
+int insertarEnPodio(t_lista *pl, void *elem, size_t cantBytes, int (*cmp)(const void *a, const void *b), int n)
+{
+    int r = 0, ce = 0;
+    t_nodo *menor, *elim, *nue;
+
+    while(*pl && (r = cmp((*pl)->info, elem)) >= 0)
+    {
+        pl = &(*pl)->sig;
+        ce++;
+    }
+
+    /// no inserto
+    if(r != 0 && ce >= n)
+    {
+        return 3;
+    }
+
+    nue = malloc(sizeof(t_nodo));
+    if(!nue)
+    {
+        return ERROR;
+    }
+    nue->info = malloc(cantBytes);
+    if(!nue->info)
+    {
+        free(nue);
+        return ERROR;
+    }
+
+    memcpy(nue->info, elem, cantBytes);
+    nue->tamInfo = cantBytes;
+    nue->sig = *pl;
+    *pl = nue;
+    t_nodo **act = pl;
+    act = &(*act)->sig;
+    ce += 2;
+
+    while (*act && ce < n)
+    {
+        ce++;
+        act = &(*act)->sig;
+    }
+
+    menor = *act;
+    if( ce <= n ){
+        while(*act && (r = cmp((*act)->info, menor->info)) == 0)
+        {
+            act = &(*act)->sig;
+        }
+    }
+
+    while(*act)
+    {
+        elim = *act;
+        *act = elim->sig;
+        free(elim->info);
+        free(elim);
+    }
+
+    return TODO_OK;
+
+}
+
+void mostrar_podio(const t_lista *pl, void (*mostrar_elemento)(void*, int), int (*cmp)(const void *e1, const void *e2))
+{
+    if (!pl || !*pl || !mostrar_elemento || !cmp) {
+        return;
+    }
+
+    const t_lista *actual = pl;
+    int posicion_actual = 1;
+    int elementos_en_posicion_anterior = 0;
+    void* valor_anterior = NULL;
+
+    while (*actual) {
+        // Si hay un elemento anterior y el valor actual es diferente al anterior
+        if (valor_anterior && cmp(valor_anterior, (*actual)->info) != 0) {
+            // Actualizar posicion: posicion anterior + cantidad de elementos en esa posicion
+            posicion_actual += elementos_en_posicion_anterior;
+            elementos_en_posicion_anterior = 0;
+        }
+
+        mostrar_elemento((*actual)->info, posicion_actual);
+
+        // Actualizar contadores
+        elementos_en_posicion_anterior++;
+        valor_anterior = (*actual)->info;
+        actual = &(*actual)->sig;
+    }
+}

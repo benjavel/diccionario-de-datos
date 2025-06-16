@@ -27,7 +27,8 @@ int buscarEnLista(const t_lista *pl, void* dato, size_t tam, int (*cmp)(const vo
 int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2));
 int eliminar_actual_lista(t_lista *pl);
 void vaciar_lista(t_lista *pl);
-
 void recorrer_lista(t_lista *pl, void (*accion)(void*, void*), void* params);
+int insertarEnPodio(t_lista *pl, void *elem, size_t cantBytes, int (*cmp)(const void *a, const void *b), int n);
+void mostrar_podio(const t_lista *pl, void (*mostrar_elemento)(void*, int), int (*cmp)(const void *e1, const void *e2));
 
 #endif

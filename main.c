@@ -3,9 +3,9 @@
 #include "diccionario.h"
 #include "utils.h"
 #include "procesadordetexto.h"
-#include "podio.h"
 #include "lista.h"
 #include <conio.h>
+#define TAM_DICCIONARIO 5
 
 int main()
 {
@@ -22,8 +22,13 @@ int main()
 
     t_diccionario dic;
     t_contador cont;
-    crear_dic(&dic, 5, hash_DJB2a, comparar_string);
-    pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont);
+    crear_dic(&dic, TAM_DICCIONARIO, hash_DJB2a, comparar_string);
+    if(pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont) == ERROR)
+    {
+        printf("Error al procesar el archivo. Asegurate de que el archivo exista y sea legible.\n");
+        return 1;
+    }
+
     do
     {
         mostrar_menu();
@@ -31,62 +36,65 @@ int main()
 
         switch(opcion)
         {
-        case 1: // mostrar contador
-            printf("Palabras: %d\n", cont.palabras);
-            printf("Espacios: %d\n", cont.espacio);
-            printf("Signos: %d\n", cont.puntuacion);
+        case 1: // Mostrar contador
+            printf("Palabras: %d\n", (int)cont.palabras);
+            printf("Espacios: %d\n", (int)cont.espacio);
+            printf("Signos: %d\n", (int)cont.puntuacion);
             break;
         case 2: // Pedir palabra
             printf("Ingrese la palabra: ");
             char palabra[100];
+            int cantApariciones;
             scanf("%s", palabra);
-
-            t_clave_valor cv;
-            cv.tamClave = strlen(palabra) + 1;
-            cv.clave = malloc(cv.tamClave);
             normalizarClaveMayus(palabra);
-            memcpy(cv.clave, palabra, cv.tamClave);
-            cv.valor = NULL;
 
-            if(obtener_dic(&dic, &cv) == TODO_OK)
+            if(obtener_dic(&dic, &palabra, &cantApariciones) == TODO_OK)
             {
-                printf("%s ha aparecido %d veces", (char*)cv.clave, *(size_t*)cv.valor);
+                printf("%s ha aparecido %d veces", palabra, cantApariciones);
             }
             else
             {
-                printf("%s no se encuentra en el texto", (char*)cv.clave);
+                printf("\a%s no se encuentra en el texto", palabra);
             }
             break;
         case 3: // Podio
-            //printf("PODIO DE LAS 5 PALABRAS CON MAS APARICIONES:\n");
-            printf("PUESTO | HASH | %-30s | CANTIDAD |\n", "PALABRA");
-            tPodio podio;
+            printf("%-30s | CANTIDAD | PUESTO \n", "PALABRA");
+
+            t_lista podio;
             crear_lista(&podio);
             t_parametros_podio params;
-            params.podio = &podio;
+            params.lista = &podio;
             params.cmp = cmpClaveValor;
-            recorrer_dic(&dic, pasarDiccionarioAPodio2, &params);
 
-            recorrer_lista(&podio, imprimir_elem_podio, &dic);
+            recorrer_dic(&dic, pasarDiccionarioAPodio, &params);
+            mostrar_podio(&podio, imprimir_elem_podio, cmpClaveValor);
 
             eliminar_actual_lista(&podio);
             break;
-        case 4: // Elejir otro
+        case 4: // Elegir otro archivo
             pedir_archivo(nomArch);
             vaciar_dic(&dic);
-            crear_dic(&dic, 2, hash_DJB2a, comparar_string);
+            crear_dic(&dic, TAM_DICCIONARIO, hash_DJB2a, comparar_string);
             pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont);
             break;
-        case 5: //
+        case 5: // Recorrer diccionario (Ver hashes y colisiones)
             recorrer_dic(&dic, imprimir_clavevalor, &dic);
             break;
-        case 6: // Salir
+        case 6: // Eliminar palabra
             printf("Elige la palabra a eliminar: ");
             char claveElim[256];
             scanf("%s", claveElim);
 
             normalizarClaveMayus(claveElim);
-            sacar_dic(&dic, claveElim);
+            if(sacar_dic(&dic, claveElim))
+            {
+                printf("Palabra eliminada exitosamente\n");
+            }
+            else
+            {
+                printf("Error eliminando la palabra del diccionario");
+            }
+
             break;
         case 7: // Salir
             printf("Gracias por usar el diccionario de datos.");

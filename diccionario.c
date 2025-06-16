@@ -3,7 +3,7 @@
 
 int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned long (*hash)(void *), int (*cmp)(const void *e1, const void *e2))
 {
-    pdic->buckets = (t_lista*)malloc(sizeof(t_nodo *) * capacidad); // tlista??
+    pdic->buckets = (t_lista*)malloc(sizeof(t_nodo *) * capacidad); 
     if (!pdic->buckets)
     {
         return ERROR;
@@ -14,7 +14,6 @@ int crear_dic(t_diccionario *pdic, size_t capacidad, unsigned long (*hash)(void 
     for (int i = 0; i < capacidad; i++)
     {
         crear_lista(&(pdic->buckets[i]));
-        // pdic->buckets)[i] = NULL;
     }
 
     pdic->hash = hash;
@@ -26,16 +25,12 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
 {
     size_t indice;
     t_clave_valor info;
-    //printf("DENTRO DE PONER EN DIC: %s\n", (char*)clave);
 
     info.clave = malloc(tamClave);
     info.valor = malloc(tamValor);
 
     memcpy(info.clave, clave, tamClave);
     memcpy(info.valor, valor, tamValor);
-
-    ///info.clave = clave;
-    ///info.valor = valor;
 
     info.tamClave = tamClave;
     info.tamValor = tamValor;
@@ -45,16 +40,28 @@ int poner_dic(t_diccionario *pdic, void *clave, void *valor, size_t tamClave, si
     return insertarAlFinalNoDup(&(pdic->buckets[indice]), &info, sizeof(t_clave_valor), pdic->cmp, acumulador);
 }
 
-
-int obtener_dic(const t_diccionario *pdic, t_clave_valor *key_val) // preguntar si es valido pasar la estructura
+int obtener_dic(const t_diccionario *pdic, void* clave, void* valor) 
 {
-    size_t indice = pdic->hash(key_val->clave) % pdic->capacidad;
-    return buscarEnLista(&(pdic->buckets[indice]), key_val, sizeof(t_clave_valor),pdic->cmp);
+    size_t indice = pdic->hash(clave) % pdic->capacidad;
+    t_clave_valor* key_val = malloc(sizeof(t_clave_valor));
+    if (!key_val)
+    {
+        return ERROR; // No se pudo asignar memoria
+    }
+
+    key_val->clave = clave;
+    if(!buscarEnLista(&(pdic->buckets[indice]), key_val, sizeof(t_clave_valor),pdic->cmp))
+    {
+        return ERROR;   //NO ENCONTRADO
+    }
+
+    memcpy(valor, key_val->valor, key_val->tamValor);
+    free(key_val);
+    return TODO_OK;
 }
 
 int sacar_dic(t_diccionario *pdic, void *clave)
 {
-    /// *info
     size_t indice = pdic->hash(clave) % pdic->capacidad;
     t_clave_valor info;
 
@@ -78,7 +85,6 @@ void recorrer_dic(const t_diccionario *pdic, void (*accion)(void *, void*), void
     {
         recorrer_lista(&(pdic->buckets[i]), accion, params);
     }
-
 }
 
 void vaciar_dic(t_diccionario *pdic)
@@ -86,7 +92,7 @@ void vaciar_dic(t_diccionario *pdic)
     for (size_t i = 0; i < pdic->capacidad; i++)
     {
         recorrer_lista(&(pdic->buckets[i]), free_clave_valor, NULL);
-        vaciar_lista(&(pdic->buckets[i])); // cuando i == 0 ???
+        vaciar_lista(&(pdic->buckets[i]));
     }
 
     pdic->capacidad = 0;
