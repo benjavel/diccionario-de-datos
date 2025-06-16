@@ -12,13 +12,13 @@
 #define POS_MAX 5
 
 typedef t_lista tPodio;
-typedef struct 
+typedef struct
 {
     tPodio* podio;
     int (*cmp)(const void* e1, const void* e2);
 }t_parametros_podio;
 
-typedef struct 
+typedef struct
 {
     void* info;
     size_t tamInfo;
@@ -31,5 +31,8 @@ int insertarEnPodio(tPodio* podio, const void* dato, size_t tamDato, size_t punt
 void asignarPosiciones(tPodio* podio);
 int compararElementos(const void* e1, const void* e2);
 void pasarDiccionarioAPodio(void* info, void* params);
+void pasarDiccionarioAPodio2(void* info, void* params);
+int cmpClaveValor(const void* e1, const void* e2);
 
+int insertarEnPodio2(t_lista *pl, void *elem, size_t cantBytes, int (*cmp)(const void *a, const void *b), int n);
 #endif

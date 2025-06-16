@@ -131,3 +131,54 @@
 1749428876 source:e:\codigo\programacionunlam\algoritmos-y-estructuras-de-datos\tp\git\diccionario-de-datos\podio.c
 	"podio.h"
 
+1750035771 source:e:\algoritmso\diccionario-de-datos\diccionario.c
+	"diccionario.h"
+	"utils.h"
+
+1750035771 e:\algoritmso\diccionario-de-datos\diccionario.h
+	"lista.h"
+	<stdlib.h>
+
+1750035771 e:\algoritmso\diccionario-de-datos\lista.h
+	<stdlib.h>
+	<string.h>
+
+1750035771 e:\algoritmso\diccionario-de-datos\utils.h
+	<string.h>
+	<stdio.h>
+	"diccionario.h"
+	"podio.h"
+
+1750035788 e:\algoritmso\diccionario-de-datos\podio.h
+	<stdlib.h>
+	<string.h>
+	"lista.h"
+	"diccionario.h"
+
+1750035771 source:e:\algoritmso\diccionario-de-datos\lista.c
+	"lista.h"
+
+1750035893 source:e:\algoritmso\diccionario-de-datos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"diccionario.h"
+	"utils.h"
+	"procesadordetexto.h"
+	"podio.h"
+	"lista.h"
+	<conio.h>
+
+1750035771 e:\algoritmso\diccionario-de-datos\procesadordetexto.h
+	"diccionario.h"
+	<stdio.h>
+	<ctype.h>
+
+1750035788 source:e:\algoritmso\diccionario-de-datos\podio.c
+	"podio.h"
+
+1750035771 source:e:\algoritmso\diccionario-de-datos\procesador-de-texto.c
+	"procesadordetexto.h"
+
+1750035788 source:e:\algoritmso\diccionario-de-datos\utils.c
+	"utils.h"
+

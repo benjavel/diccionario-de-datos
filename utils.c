@@ -93,6 +93,11 @@ void pedir_archivo(char* nomArch)
 
 void imprimir_elem_podio(void* info, void* params)
 {
+
+    t_clave_valor *a = (t_clave_valor *) info;
+    //printf("%s | %d\n", a->clave, *(int *) a->valor);
+
+
     tElemPodio* elemActual = info;
     char* palabraActual = elemActual->info;
     t_diccionario* dic = (t_diccionario*)params;

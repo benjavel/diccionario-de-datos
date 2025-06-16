@@ -22,7 +22,7 @@ int main()
 
     t_diccionario dic;
     t_contador cont;
-    crear_dic(&dic, 2, hash_DJB2a, comparar_string);
+    crear_dic(&dic, 5, hash_DJB2a, comparar_string);
     pasar_texto_a_dic(&dic, nomArch, acumular_palabra, &cont);
     do
     {
@@ -64,8 +64,8 @@ int main()
             crear_lista(&podio);
             t_parametros_podio params;
             params.podio = &podio;
-            params.cmp = compararElementos;
-            recorrer_dic(&dic, pasarDiccionarioAPodio, &params);
+            params.cmp = cmpClaveValor;
+            recorrer_dic(&dic, pasarDiccionarioAPodio2, &params);
 
             recorrer_lista(&podio, imprimir_elem_podio, &dic);
 
