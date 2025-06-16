@@ -42,6 +42,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="podio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="podio.h" />
 		<Unit filename="procesador-de-texto.c">
 			<Option compilerVar="CC" />
 		</Unit>

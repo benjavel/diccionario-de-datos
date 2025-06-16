@@ -96,7 +96,7 @@ int buscarEnLista(const t_lista *pl, void* dato, size_t tam, int (*cmp)(const vo
 int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *e1, const void *e2))
 {
     t_nodo *elim;
-    int resultado;
+    int resultado = -1;
     if(!(*pl))
     {
         return LISTA_VACIA;
@@ -124,7 +124,6 @@ int eliminarDeLista(t_lista *pl, void* dato, size_t tam, int (*cmp)(const void *
 
 int eliminar_actual_lista(t_lista *pl)
 {
-
     t_nodo* elim;
     while(*pl)
     {

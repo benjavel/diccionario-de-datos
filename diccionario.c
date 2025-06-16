@@ -67,7 +67,7 @@ int sacar_dic(t_diccionario *pdic, void *clave)
 
     info.clave = clave;
 
-    if(eliminarDeLista(&(pdic->buckets[indice]), &info, sizeof(t_clave_valor), pdic->cmp))
+    if(eliminarDeLista(&(pdic->buckets[indice]), &info, sizeof(t_clave_valor), pdic->cmp) == TODO_OK)
     {
         free(info.clave);
         free(info.valor);
